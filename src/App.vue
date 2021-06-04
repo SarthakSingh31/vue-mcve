@@ -1,28 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <test-slot>
+      <template #some-name>
+        <div v-if="false">
+          This is set to false
+        </div>
+        This should show up but it won't
+      </template>
+    </test-slot>
+    <test-slot>
+      <template #some-name>
+        <div v-if="true">
+          This is set to true
+        </div>
+        This should show up and it would
+      </template>
+    </test-slot>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TestSlot from './components/TestSlot.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    'test-slot': TestSlot,
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
